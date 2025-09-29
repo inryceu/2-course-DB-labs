@@ -1,0 +1,121 @@
+@startuml
+!theme blueprint
+
+entity "User" as User {
+  *id : INT
+  --
+  username : VARCHAR
+  email : VARCHAR
+  password_hash : VARCHAR
+  age : INT
+  region : VARCHAR
+  avatar : URL
+  created_at : DATETIME
+  last_login : DATETIME
+}
+
+entity "Game" as Game {
+  *id : INT
+  --
+  title : VARCHAR
+  price : DECIMAL
+  release_date : DATE
+  age_rating : VARCHAR
+  cover : URL
+  description : TEXT
+  system_requirements : JSON
+  base_game_id : INT (FK, DLC)
+}
+
+entity "Developer/Publisher" as DevPub {
+  *id : INT
+  --
+  name : VARCHAR
+  contacts : JSON
+  logo : URL
+  type : ENUM(developer, publisher, both)
+}
+
+entity "Tag" as Tag {
+  *id : INT
+  --
+  name : VARCHAR
+}
+
+entity "Library" as Library {
+  *id : INT
+  --
+  user_id : INT (FK)
+  game_id : INT (FK)
+  ownership_type : ENUM(wishlist, rented, purchased)
+  status : ENUM(installed, not installed, in progress)
+  hours_played : INT
+  last_played : DATETIME
+}
+
+entity "Review" as Review {
+  *id : INT
+  --
+  user_id : INT (FK)
+  game_id : INT (FK)
+  rating : INT
+  text : TEXT
+  created_at : DATETIME
+}
+
+entity "Friendship" as Friendship {
+  *user_id : INT (FK)
+  *friend_id : INT (FK)
+  --
+  status : ENUM(pending, accepted, blocked)
+}
+
+entity "Achievement" as Achievement {
+  *id : INT
+  --
+  game_id : INT (FK)
+  title : VARCHAR
+  description : TEXT
+  icon : BLOB/URL
+}
+
+entity "CloudSave" as CloudSave {
+  *id : INT
+  --
+  user_id : INT (FK)
+  game_id : INT (FK)
+  save_data : BLOB/JSON
+  last_updated : DATETIME
+}
+
+entity "Sale/Event" as SaleEvent {
+  *id : INT
+  --
+  game_id : INT (FK)
+  discount : DECIMAL
+  start_date : DATE
+  end_date : DATE
+  event_type : ENUM(sale, free_weekend, giveaway)
+}
+
+' --- Relationships ---
+
+User ||--o{ Library : owns
+Game ||--o{ Library : appears_in
+
+User ||--o{ Review : writes
+Game ||--o{ Review : has
+
+User ||--o{ CloudSave : saves
+Game ||--o{ CloudSave : supports
+
+User }o--o{ Achievement : unlocks
+Game ||--o{ Achievement : defines
+
+Game }o--o{ Tag : tagged_with
+Game }o--o{ DevPub : created/published_by
+Game ||--o{ SaleEvent : has_event
+Game ||--o{ Game : DLC_of
+
+User }o--o{ User : Friendship
+@enduml
