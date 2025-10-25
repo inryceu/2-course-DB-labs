@@ -5,7 +5,7 @@ CREATE TABLE users (
     password_hash VARCHAR(255) NOT NULL,
     age INT NOT NULL CHECK (age >= 13),
     region CHAR(2) NOT NULL CHECK (region ~ '^[A-Z]{2}$'),
-    avatar VARCHAR(2083), CHECK (avatar ~ '^(https?://).+'),
+    avatar VARCHAR(2083) CHECK (avatar ~ '^(https?://).+'),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_login TIMESTAMP
 );
