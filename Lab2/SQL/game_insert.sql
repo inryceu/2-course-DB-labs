@@ -9,7 +9,6 @@ INSERT INTO games (
     base_game_id
 )
 VALUES 
-
 (
     'Starfall Odyssey',
     59.99,
@@ -26,7 +25,6 @@ VALUES
     }',
     NULL
 ),
-
 (
     'Farm Life Simulator',
     14.99,
@@ -43,7 +41,6 @@ VALUES
     }',
     NULL
 ),
-
 (
     'Shadow Protocol',
     39.99,
@@ -60,7 +57,6 @@ VALUES
     }',
     NULL
 ),
-
 (
     'Shadow Protocol: Covert Ops',
     24.99,
@@ -76,4 +72,4 @@ VALUES
         "Storage": "30 GB"
     }',
     3
-);;
+);

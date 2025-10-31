@@ -12,7 +12,6 @@ VALUES
     "unlocked_nodes": 7,
     "choices": ["spared_AI_core", "hacked_security"]
 }'),
-
 (2, 2, '{
     "progress": 88,
     "difficulty": "Hard",
@@ -25,7 +24,6 @@ VALUES
     "missions_completed": 1,
     "equipment": ["ion blaster", "shield enhancer"]
 }'),
-
 (3, 4, '{
     "progress": 23,
     "chapter": "Echoes of Thought",

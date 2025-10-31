@@ -1,5 +1,5 @@
 INSERT INTO tags (tag_name) VALUES
-('Sci-Fi'),
+('Sci Fi'),
 ('Space Exploration'),
 ('Adventure'),
 ('Stealth'),
