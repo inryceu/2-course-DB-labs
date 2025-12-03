@@ -40,6 +40,7 @@ export type AchievementsMinAggregateOutputType = {
   id: number | null
   game_id: number | null
   title: string | null
+  description: string | null
   icon: string | null
 }
 
@@ -47,6 +48,7 @@ export type AchievementsMaxAggregateOutputType = {
   id: number | null
   game_id: number | null
   title: string | null
+  description: string | null
   icon: string | null
 }
 
@@ -54,6 +56,7 @@ export type AchievementsCountAggregateOutputType = {
   id: number
   game_id: number
   title: number
+  description: number
   icon: number
   _all: number
 }
@@ -73,6 +76,7 @@ export type AchievementsMinAggregateInputType = {
   id?: true
   game_id?: true
   title?: true
+  description?: true
   icon?: true
 }
 
@@ -80,6 +84,7 @@ export type AchievementsMaxAggregateInputType = {
   id?: true
   game_id?: true
   title?: true
+  description?: true
   icon?: true
 }
 
@@ -87,6 +92,7 @@ export type AchievementsCountAggregateInputType = {
   id?: true
   game_id?: true
   title?: true
+  description?: true
   icon?: true
   _all?: true
 }
@@ -181,6 +187,7 @@ export type AchievementsGroupByOutputType = {
   id: number
   game_id: number
   title: string
+  description: string | null
   icon: string
   _count: AchievementsCountAggregateOutputType | null
   _avg: AchievementsAvgAggregateOutputType | null
@@ -211,6 +218,7 @@ export type achievementsWhereInput = {
   id?: Prisma.IntFilter<"achievements"> | number
   game_id?: Prisma.IntFilter<"achievements"> | number
   title?: Prisma.StringFilter<"achievements"> | string
+  description?: Prisma.StringNullableFilter<"achievements"> | string | null
   icon?: Prisma.StringFilter<"achievements"> | string
   games?: Prisma.XOR<Prisma.GamesScalarRelationFilter, Prisma.gamesWhereInput>
   user_achieve_connection?: Prisma.User_achieve_connectionListRelationFilter
@@ -220,6 +228,7 @@ export type achievementsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   game_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   icon?: Prisma.SortOrder
   games?: Prisma.gamesOrderByWithRelationInput
   user_achieve_connection?: Prisma.user_achieve_connectionOrderByRelationAggregateInput
@@ -232,6 +241,7 @@ export type achievementsWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.achievementsWhereInput | Prisma.achievementsWhereInput[]
   game_id?: Prisma.IntFilter<"achievements"> | number
   title?: Prisma.StringFilter<"achievements"> | string
+  description?: Prisma.StringNullableFilter<"achievements"> | string | null
   icon?: Prisma.StringFilter<"achievements"> | string
   games?: Prisma.XOR<Prisma.GamesScalarRelationFilter, Prisma.gamesWhereInput>
   user_achieve_connection?: Prisma.User_achieve_connectionListRelationFilter
@@ -241,6 +251,7 @@ export type achievementsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   game_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   icon?: Prisma.SortOrder
   _count?: Prisma.achievementsCountOrderByAggregateInput
   _avg?: Prisma.achievementsAvgOrderByAggregateInput
@@ -256,11 +267,13 @@ export type achievementsScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"achievements"> | number
   game_id?: Prisma.IntWithAggregatesFilter<"achievements"> | number
   title?: Prisma.StringWithAggregatesFilter<"achievements"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"achievements"> | string | null
   icon?: Prisma.StringWithAggregatesFilter<"achievements"> | string
 }
 
 export type achievementsCreateInput = {
   title: string
+  description?: string | null
   icon: string
   games: Prisma.gamesCreateNestedOneWithoutAchievementsInput
   user_achieve_connection?: Prisma.user_achieve_connectionCreateNestedManyWithoutAchievementsInput
@@ -270,12 +283,14 @@ export type achievementsUncheckedCreateInput = {
   id?: number
   game_id: number
   title: string
+  description?: string | null
   icon: string
   user_achieve_connection?: Prisma.user_achieve_connectionUncheckedCreateNestedManyWithoutAchievementsInput
 }
 
 export type achievementsUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   games?: Prisma.gamesUpdateOneRequiredWithoutAchievementsNestedInput
   user_achieve_connection?: Prisma.user_achieve_connectionUpdateManyWithoutAchievementsNestedInput
@@ -285,6 +300,7 @@ export type achievementsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   game_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   user_achieve_connection?: Prisma.user_achieve_connectionUncheckedUpdateManyWithoutAchievementsNestedInput
 }
@@ -293,11 +309,13 @@ export type achievementsCreateManyInput = {
   id?: number
   game_id: number
   title: string
+  description?: string | null
   icon: string
 }
 
 export type achievementsUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -305,6 +323,7 @@ export type achievementsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   game_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -312,6 +331,7 @@ export type achievementsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   game_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
 }
 
@@ -324,6 +344,7 @@ export type achievementsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   game_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
 }
 
@@ -331,6 +352,7 @@ export type achievementsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   game_id?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   icon?: Prisma.SortOrder
 }
 
@@ -356,6 +378,10 @@ export type AchievementsScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -424,6 +450,7 @@ export type achievementsUpdateOneRequiredWithoutUser_achieve_connectionNestedInp
 
 export type achievementsCreateWithoutGamesInput = {
   title: string
+  description?: string | null
   icon: string
   user_achieve_connection?: Prisma.user_achieve_connectionCreateNestedManyWithoutAchievementsInput
 }
@@ -431,6 +458,7 @@ export type achievementsCreateWithoutGamesInput = {
 export type achievementsUncheckedCreateWithoutGamesInput = {
   id?: number
   title: string
+  description?: string | null
   icon: string
   user_achieve_connection?: Prisma.user_achieve_connectionUncheckedCreateNestedManyWithoutAchievementsInput
 }
@@ -468,11 +496,13 @@ export type achievementsScalarWhereInput = {
   id?: Prisma.IntFilter<"achievements"> | number
   game_id?: Prisma.IntFilter<"achievements"> | number
   title?: Prisma.StringFilter<"achievements"> | string
+  description?: Prisma.StringNullableFilter<"achievements"> | string | null
   icon?: Prisma.StringFilter<"achievements"> | string
 }
 
 export type achievementsCreateWithoutUser_achieve_connectionInput = {
   title: string
+  description?: string | null
   icon: string
   games: Prisma.gamesCreateNestedOneWithoutAchievementsInput
 }
@@ -481,6 +511,7 @@ export type achievementsUncheckedCreateWithoutUser_achieve_connectionInput = {
   id?: number
   game_id: number
   title: string
+  description?: string | null
   icon: string
 }
 
@@ -502,6 +533,7 @@ export type achievementsUpdateToOneWithWhereWithoutUser_achieve_connectionInput 
 
 export type achievementsUpdateWithoutUser_achieve_connectionInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   games?: Prisma.gamesUpdateOneRequiredWithoutAchievementsNestedInput
 }
@@ -510,17 +542,20 @@ export type achievementsUncheckedUpdateWithoutUser_achieve_connectionInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   game_id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type achievementsCreateManyGamesInput = {
   id?: number
   title: string
+  description?: string | null
   icon: string
 }
 
 export type achievementsUpdateWithoutGamesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   user_achieve_connection?: Prisma.user_achieve_connectionUpdateManyWithoutAchievementsNestedInput
 }
@@ -528,6 +563,7 @@ export type achievementsUpdateWithoutGamesInput = {
 export type achievementsUncheckedUpdateWithoutGamesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   user_achieve_connection?: Prisma.user_achieve_connectionUncheckedUpdateManyWithoutAchievementsNestedInput
 }
@@ -535,6 +571,7 @@ export type achievementsUncheckedUpdateWithoutGamesInput = {
 export type achievementsUncheckedUpdateManyWithoutGamesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   icon?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -573,6 +610,7 @@ export type achievementsSelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   game_id?: boolean
   title?: boolean
+  description?: boolean
   icon?: boolean
   games?: boolean | Prisma.gamesDefaultArgs<ExtArgs>
   user_achieve_connection?: boolean | Prisma.achievements$user_achieve_connectionArgs<ExtArgs>
@@ -583,6 +621,7 @@ export type achievementsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   game_id?: boolean
   title?: boolean
+  description?: boolean
   icon?: boolean
   games?: boolean | Prisma.gamesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["achievements"]>
@@ -591,6 +630,7 @@ export type achievementsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   game_id?: boolean
   title?: boolean
+  description?: boolean
   icon?: boolean
   games?: boolean | Prisma.gamesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["achievements"]>
@@ -599,10 +639,11 @@ export type achievementsSelectScalar = {
   id?: boolean
   game_id?: boolean
   title?: boolean
+  description?: boolean
   icon?: boolean
 }
 
-export type achievementsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "game_id" | "title" | "icon", ExtArgs["result"]["achievements"]>
+export type achievementsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "game_id" | "title" | "description" | "icon", ExtArgs["result"]["achievements"]>
 export type achievementsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   games?: boolean | Prisma.gamesDefaultArgs<ExtArgs>
   user_achieve_connection?: boolean | Prisma.achievements$user_achieve_connectionArgs<ExtArgs>
@@ -625,6 +666,7 @@ export type $achievementsPayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: number
     game_id: number
     title: string
+    description: string | null
     icon: string
   }, ExtArgs["result"]["achievements"]>
   composites: {}
@@ -1054,6 +1096,7 @@ export interface achievementsFieldRefs {
   readonly id: Prisma.FieldRef<"achievements", 'Int'>
   readonly game_id: Prisma.FieldRef<"achievements", 'Int'>
   readonly title: Prisma.FieldRef<"achievements", 'String'>
+  readonly description: Prisma.FieldRef<"achievements", 'String'>
   readonly icon: Prisma.FieldRef<"achievements", 'String'>
 }
     

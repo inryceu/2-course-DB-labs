@@ -6,3 +6,4 @@ model achievements {
   games                   games                     @relation(fields: [game_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   user_achieve_connection user_achieve_connection[]
 }
+
