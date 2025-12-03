@@ -1,0 +1,8 @@
+model achievements {
+  id                      Int                       @id @default(autoincrement())
+  game_id                 Int
+  title                   String                    @db.VarChar(64)
+  icon                    String                    @db.VarChar(2083)
+  games                   games                     @relation(fields: [game_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user_achieve_connection user_achieve_connection[]
+}
