@@ -352,10 +352,6 @@ export type DevsScalarRelationFilter = {
   isNot?: Prisma.devsWhereInput
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type Enumdev_typeFieldUpdateOperationsInput = {
   set?: $Enums.dev_type
 }

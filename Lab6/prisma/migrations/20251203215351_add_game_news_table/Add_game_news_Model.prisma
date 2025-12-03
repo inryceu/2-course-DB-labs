@@ -10,3 +10,4 @@ model game_news {
 model games {
   game_news game_news[]
 }
+
